@@ -4,7 +4,9 @@ import { useForm , useFieldArray } from 'react-hook-form';
 import { Calculator } from './components/calculator';
 import {
   Center,
-  Button
+  Button,
+  VStack,
+  Text
 } from '@chakra-ui/react';
 import PriceArray from './components/priceArray';
 
@@ -28,17 +30,22 @@ export default function Home() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Center>
-        <PriceArray 
-          {...{
-            control,
-            register,
-            setValue,
-            errors
-          }}
-        />
+      <Center mt={100}>
+        <VStack>
+          <Text fontSize="xl" as="b" mb={10}>
+            Calculating Array Total with React Hook Form
+          </Text>
+          <PriceArray 
+            {...{
+              control,
+              register,
+              setValue,
+              errors
+            }}
+          />
+          <Button type='submit'>Submit</Button>
+        </VStack>
       </Center>
-      <Button type='submit'>Submit</Button>
     </form>
   );
 }

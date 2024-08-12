@@ -18,7 +18,7 @@ function totalCal(results) {
     return totalValue;
 }
 
-function totalValue(results) {
+function totalValue(results : any) {
     let totalValue = 0;
     for (const key in results) {
         for (const value in results[key]) {
@@ -48,8 +48,8 @@ export const Calculator = ({control, setValue}) => {
 
     return (
         <div>
-            <h1>Total: {output}</h1>
-            <h1>Total: {outputzz}</h1>
+            <h1>Total of All Number That Appears: {output}</h1>
+            <h1>Total of Row Product: {outputzz}</h1>
         </div>
     )
 } 

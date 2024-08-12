@@ -5,7 +5,9 @@ import { useFieldArray } from "react-hook-form";
 import {
     Input,
     Button,
-    VStack
+    VStack,
+    HStack,
+    Tooltip
 } from '@chakra-ui/react';
 
 export default function PriceArray({control, register, setValue}) {
@@ -18,19 +20,23 @@ export default function PriceArray({control, register, setValue}) {
         <VStack>
             {fields.map((field, index) => (
                 <div key={field.id}>
+                    <HStack>
                     <Input
                         {...register(`sales.${index}.price`)}
                         type="number"
                         placeholder="Price"
                     />
+                    <Tooltip label="Quantity">
                     <Input
                         {...register(`sales.${index}.quantity`)}
                         type="number"
                         placeholder="Quantity"
-                        defaultValue="1"
+                        defaultValue="0"
                     />
+                    </Tooltip>
                     
-                    <Button type="button" onClick={() => remove(index)}>Delete</Button>
+                    <Button type="button" onClick={() => remove(index)} mr={5} w={150}>Delete</Button>
+                    </HStack>
                 </div>
             ))}
             <Button type="button" onClick={() => append({})}>Add</Button>
